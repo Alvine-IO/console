@@ -1,0 +1,278 @@
+<!--
+
+ ALVINE
+
+ COPYRIGHT: All  title   and  proprietary  rights,  including  trade
+ secrets,   in   the   Software   and   any   copies thereof and the
+ accompanying  written   materials,   are  owned  by   schukai  GmbH
+ and  are  protected  by  German  copyright  laws,  other applicable
+ copyright   laws  and  international  treaty  provisions.
+
+ @package    NAMESPACEPLACEHOLDER
+ @author     schukai GmbH <info@schukai.de>
+ @copyright  2002 - 2016 schukai GmbH
+ @license    http://alvine.io/license/ Licence
+ @version    Release: $Revision$
+ @link       http://alvine.io/ Alvine
+/
+-->
+
+<!-- 
+
+Remove this instruction block after takeover
+
+1. Replace placeholder
+
+NAMESPACEPLACEHOLDER
+OBJECTPLACEHOLDER
+OBJECTVERSIONSPLACEHOLDER
+TEMPLATEIDPLACEHOLDER
+AUTORUNCLASSPLACEHOLDER
+
+2. embeded required scripts and style files
+
+Note: Scripts can be at the beginning, because it loading
+not important modules to a blocking.
+
+3. Select the implementation detail (see examples)
+
+4. remove unused code
+
+5. integrate this in your console config
+
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>NAMESPACEPLACEHOLDER.OBJECTPLACEHOLDER OBJECTVERSIONSPLACEHOLDER</title>
+    </head>
+    <body>
+        <!-- external libraries -->
+        <!-- external style files -->
+
+        <template id="TEMPLATEIDPLACEHOLDER">
+            <!-- TEMPLATE OF MODULES -->
+        </template>
+
+
+        <script>
+            /**
+             * FUNCTIONS OF MODULES
+             */
+
+            /** Log console as a fallback for the Framework Logger */
+            var console = window.console || {};
+            console.error = console.error || console.log || function () {};
+
+            /** Functions in try / catch block to hedge */
+            try {
+                "use strict";
+
+                /**
+                 * NAMESPACEPLACEHOLDER
+                 * 
+                 * @param {Object} global
+                 * @param {Object} Alvine
+                 * @param {Object} jQuery
+                 * 
+                 * @returns {html-moduleL$19.Host}
+                 */
+                (function (globalContext) {
+
+                    /**
+                     * Functions and features that do not
+                                           * to be minified 
+                     */
+                    "Host:nomunge,NavigationHandler:nomunge";
+
+                    /**
+                     * Variables which find use in the module.
+                     */
+                    var namespace, DEFAULTS, component, Alvine, jQuery, console;
+
+                    /**
+                     * @type String Namespace 
+                     */
+                    namespace = 'NAMESPACEPLACEHOLDER';
+
+                    /**
+                     * DEFAULT-Values
+                     */
+                    DEFAULTS = {
+
+                        /**
+                         * @type {String} Required version of the framework
+                         */
+                        'REQUIREDALVINEFRAMEWORKVERSION': '0.11.2',
+
+                        /**
+                         * @type {String} String Required Version jQuery
+                         */
+                        'REQUIREDJQUERYVERSION': '2.1.1'
+                    };
+
+
+                    /**
+                     * Test functions and allocation of global variables 
+                     */
+                    Alvine = globalContext.Alvine;
+                    jQuery = globalContext.jQuery;
+
+                    /** check objects */
+                    if (typeof Alvine !== 'object'
+                            || typeof Alvine.Namespace !== 'function'
+                            || !(Alvine instanceof Alvine.Namespace)) {
+                        console.error('Alvine javascript framework missing.');
+                        return null;
+                    }
+
+                    if ((typeof jQuery !== 'function' && typeof jQuery !== 'object')
+                            || !jQuery.fn === undefined
+                            || typeof jQuery.fn.jquery !== 'string') {
+                        console.error('jQuery missing.');
+                        return null;
+                    }
+
+                    /** version check jQuery */
+                    if ((new Alvine.Types.Version(jQuery.fn.jquery)).compareTo(DEFAULTS.REQUIREDJQUERYVERSION) === -1) {
+                        console.error('jQuery Version ' + DEFAULTS.REQUIREDJQUERYVERSION + ' required.');
+                    }
+
+                    /** version check Alvine */
+                    if (Alvine.getVersion().compareTo(DEFAULTS.REQUIREDALVINEFRAMEWORKVERSION) === -1) {
+                        console.error('Alvine framework Version ' + DEFAULTS.REQUIREDALVINEFRAMEWORKVERSION + ' required, ' + Alvine.getVersion() + ' is given.');
+                    }
+
+                    /** 
+                     *  All assigned in the namespace
+                                           * properties are accessible via the namespace.
+                     */
+                    Alvine.assignToNamespace(namespace, OBJECTPLACEHOLDER);
+
+                    /**
+                     * Create a component object and 
+                     * enter this in the system register.
+                     */
+                    component = Alvine.Package.Factory.createComponent(namespace + '.OBJECTPLACEHOLDER');
+
+
+                    /** 
+                     * EXAMPLE: Object for creating new objects 
+                     */
+
+                    /**
+                     * Objekt constructor
+                     * 
+                     * @returns {html-moduleL$17.OBJECTPLACEHOLDER}
+                     */
+                    function OBJECTPLACEHOLDER() {
+                        Alvine.Types.testIsCalledAsConstructor.call(this, 'OBJECTPLACEHOLDER', namespace);
+
+                        /**
+                         * Name des Objektes; darüber kann das Objekt identifiziert werden
+                         */
+                        globalContext.Object.defineProperty(this, 'objectName', {
+                            'value': namespace + '.OBJECTPLACEHOLDER',
+                            'enumerable': false,
+                            'writable': false,
+                            'configurable': true
+                        });
+                    }
+
+                    /** 
+                     * derived object of Alvine.Types.Objekt and
+                     * the appropriate constructor for the clone()
+                     * function.
+                     */
+                    OBJECTPLACEHOLDER.prototype = new Alvine.Types.Object();
+                    OBJECTPLACEHOLDER.prototype.constructor = OBJECTPLACEHOLDER;
+
+                    /** EXAMPLE END */
+
+                    /**
+                     * EXAMPLE: Factory for creating a new Alvine Framework jQuery plugins
+                     */
+                    /**
+                     * Plugin Method
+                     * 
+                     * @param {type} options
+                     * @returns {LoremIpsumL$10.Plugin}
+                     */
+                    function OBJECTPLACEHOLDER(options) {
+                        return new Plugin(options);
+                    }
+
+                    /**
+                     * Plugin init
+                     * 
+                     * @param {type} options
+                     * @returns {LoremIpsumL$10.Plugin}
+                     */
+                    function Plugin(options) {
+                        Alvine.Types.testIsCalledAsConstructor.call(this, 'Plugin', namespace);
+                    }
+
+                    /** Inheritance and constructor */
+                    Plugin.prototype = new Alvine.jQuery.Plugin();
+                    Plugin.prototype.constructor = Plugin;
+
+                    /**
+                     * Defaults
+                     * 
+                     * @returns {LoremIpsumL$10.DEFAULTS}
+                     */
+                    Plugin.prototype.getDefaults = function () {
+                        return DEFAULTS;
+                    };
+
+                    /**
+                     * Default
+                     * 
+                     * @returns {LoremIpsumL$10.DEFAULTS}
+                     */
+                    Plugin.prototype.getDefault = function (name) {
+                        return DEFAULTS[name];
+                    };
+
+
+                    /**
+                     * Plugin init
+                     * 
+                     * @returns {LoremIpsumL$10.Plugin.prototype}
+                     */
+                    Plugin.prototype.init = function () {
+                        var jqElement;
+                        jqElement = this.component.jQElement;
+                        return this;
+                    };
+
+                    /** 
+                     * Automatic assignment
+                     * 
+                     * Danger: Attention must be paid to the temporal 
+                     * sequence and module loading.
+                     */
+                    jQuery(function () {
+                        jQuery('.AUTORUNCLASSPLACEHOLDER').asignAlvineComponent(OBJECTPLACEHOLDER);
+                    });
+
+                    /** EXAMPLE END */
+                    return null;
+
+                })(window !== undefined ? window : this);
+
+            } catch (e) {
+                /**
+                 * At this point, can not be assumed,
+                 * that there are certain properties and functions. That's why
+                 * insert test for undefined and only if available.
+                 */
+                if (console !== undefined && console.error !== undefined) {
+                    console.error(namespace + ': ' + e);
+                }
+            }
+
+        </script>
+    </body>
+</html>
