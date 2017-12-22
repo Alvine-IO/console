@@ -24,6 +24,7 @@ Remove this instruction block after takeover
 1. Replace placeholder
 
 NAMESPACEPLACEHOLDER
+COMPONENTNAMEPLACEHOLDER
 OBJECTPLACEHOLDER
 OBJECTVERSIONSPLACEHOLDER
 TEMPLATEIDPLACEHOLDER
@@ -55,6 +56,9 @@ not important modules to a blocking.
             <!-- TEMPLATE OF MODULES -->
         </template>
 
+        <template id="template">
+            <div data-container></div>
+        </template>     
 
         <script>
             /**
@@ -82,19 +86,29 @@ not important modules to a blocking.
 
                     /**
                      * Functions and features that do not
-                                           * to be minified 
+                     * to be minified 
                      */
                     "Host:nomunge,NavigationHandler:nomunge";
 
                     /**
                      * Variables which find use in the module.
                      */
-                    var namespace, DEFAULTS, component, Alvine, jQuery, console;
+                    var namespace, componentName, componentVersion, DEFAULTS, Alvine, jQuery;
 
                     /**
                      * @type String Namespace 
                      */
                     namespace = 'NAMESPACEPLACEHOLDER';
+                 
+                    /**
+                     * @type String Component-Name
+                     */
+                    componentName = 'COMPONENTNAMEPLACEHOLDER';
+                 
+                    /**
+                     * @type String Component Version
+                     */
+                    componentVersion = '1.0.0';                 
 
                     /**
                      * DEFAULT-Values
@@ -104,12 +118,13 @@ not important modules to a blocking.
                         /**
                          * @type {String} Required version of the framework
                          */
-                        'REQUIREDALVINEFRAMEWORKVERSION': '0.11.2',
+                        'REQUIREDALVINEFRAMEWORKVERSION': '1.8.1',
 
                         /**
                          * @type {String} String Required Version jQuery
                          */
                         'REQUIREDJQUERYVERSION': '2.1.1'
+
                     };
 
 
@@ -120,28 +135,11 @@ not important modules to a blocking.
                     jQuery = globalContext.jQuery;
 
                     /** check objects */
-                    if (typeof Alvine !== 'object'
-                            || typeof Alvine.Namespace !== 'function'
-                            || !(Alvine instanceof Alvine.Namespace)) {
+                    if(typeof Alvine!=='object'
+                        ||typeof Alvine.Namespace!=='function'
+                        ||!(Alvine instanceof Alvine.Namespace)) {
                         console.error('Alvine javascript framework missing.');
                         return null;
-                    }
-
-                    if ((typeof jQuery !== 'function' && typeof jQuery !== 'object')
-                            || !jQuery.fn === undefined
-                            || typeof jQuery.fn.jquery !== 'string') {
-                        console.error('jQuery missing.');
-                        return null;
-                    }
-
-                    /** version check jQuery */
-                    if ((new Alvine.Types.Version(jQuery.fn.jquery)).compareTo(DEFAULTS.REQUIREDJQUERYVERSION) === -1) {
-                        console.error('jQuery Version ' + DEFAULTS.REQUIREDJQUERYVERSION + ' required.');
-                    }
-
-                    /** version check Alvine */
-                    if (Alvine.getVersion().compareTo(DEFAULTS.REQUIREDALVINEFRAMEWORKVERSION) === -1) {
-                        console.error('Alvine framework Version ' + DEFAULTS.REQUIREDALVINEFRAMEWORKVERSION + ' required, ' + Alvine.getVersion() + ' is given.');
                     }
 
                     /** 
@@ -155,7 +153,6 @@ not important modules to a blocking.
                      * enter this in the system register.
                      */
                     component = Alvine.Package.Factory.createComponent(namespace + '.OBJECTPLACEHOLDER');
-
 
                     /** 
                      * EXAMPLE: Object for creating new objects 
