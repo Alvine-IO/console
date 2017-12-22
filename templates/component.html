@@ -1,0 +1,181 @@
+<!--
+
+ ALVINE
+
+ COPYRIGHT: All  title   and  proprietary  rights,  including  trade
+ secrets,   in   the   Software   and   any   copies thereof and the
+ accompanying  written   materials,   are  owned  by   schukai  GmbH
+ and  are  protected  by  German  copyright  laws,  other applicable
+ copyright   laws  and  international  treaty  provisions.
+
+ @package    Alvine.Package.UI.Keyboard
+ @author     schukai GmbH <info@schukai.de>
+ @copyright  2002 - 2018 schukai GmbH
+ @license    http://alvine.io/license/ Licence
+ @version    Release: $Revision$
+ @link       http://alvine.io/ Alvine
+
+Replace the following placeholder with your names
+
+NAMESPACEPLACEHOLDER 
+COMPONENTNAMEPLACEHOLDER
+COMPONENTVERSIONPLACEHOLDER
+
+
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>NAMESPACEPLACEHOLDER.COMPONENTNAMEPLACEHOLDER</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.8.5/showdown.min.js"></script>
+    </head>
+    <body>
+
+        <template id="template">
+            <div data-container></div>
+        </template>
+
+        <script>
+            /**
+             * FUNCTIONS OF MODULES
+             */
+
+            /** Log console as a fallback for the Framework Logger */
+            var console = window.console||{};
+            console.error = console.error||console.log||function() {};
+
+            /** Functions in try / catch block to hedge */
+            try {
+                "use strict";
+
+                /**
+                 * Alvine.Package.UI.Keyboard
+                 * 
+                 * @param {Object} global
+                 * @param {Object} Alvine
+                 * @param {Object} jQuery
+                 * 
+                 * @returns {html-moduleL$19.Host}
+                 */
+                (function(globalContext) {
+
+                    /**
+                     * Beim packen nicht durch andere Namen ersetzen. jQuery:nomunge
+                     */
+                    "";
+
+                    /** Variablen */
+                    var namespace, componentName, componentVersion, DEFAULTS, Alvine, jQuery;
+
+                    /**
+                     * @type String Namespace 
+                     */
+                    namespace = 'NAMESPACEPLACEHOLDER';
+
+                    /**
+                     * Name der Komponente
+                     */
+                    componentName = 'COMPONENTNAMEPLACEHOLDER';
+
+                    /**
+                     * Version der Komponente
+                     */
+                    componentVersion = 'COMPONENTVERSIONPLACEHOLDER';
+
+                    /**
+                     * DEFAULT-Values
+                     */
+                    DEFAULTS = {
+
+                        /**
+                         * @type {String} Required version of the framework
+                         */
+                        'REQUIREDALVINEFRAMEWORKVERSION': '1.8.1',
+
+                        /**
+                         * @type {String} String Required Version jQuery
+                         */
+                        'REQUIREDJQUERYVERSION': '2.1.1'
+
+
+                    };
+
+                    /**
+                     * Test functions and allocation of global variables 
+                     */
+                    Alvine = globalContext.Alvine;
+                    jQuery = globalContext.jQuery;
+
+                    /** check objects */
+                    if(typeof Alvine!=='object'
+                        ||typeof Alvine.Namespace!=='function'
+                        ||!(Alvine instanceof Alvine.Namespace)) {
+                        console.error('Alvine javascript framework missing.');
+                        return null;
+                    }
+
+                    Alvine.Package.Console.Host.startComponent(namespace+'.'+componentName, componentVersion, {
+                        libraries: {
+                            alvine: DEFAULTS.REQUIREDALVINEFRAMEWORKVERSION,
+                            jquery: DEFAULTS.REQUIREDJQUERYVERSION
+                        },
+                        locales: [
+                            "resource/"
+                        ],
+                        modules: {
+                            'Alvine.Package.UI.Dialog.Bootstrap': '1.0.0'
+                        },
+                        view: {
+                            init: initUI,
+                            activate: activateUI,
+                            template: '#template'
+                        },
+                        component: {
+                            cleanUp: () => {
+                                 // Cleanup eventhandler, resources, etc
+                            }
+                        }
+                    }).then(objects => {
+                        console.log('[component,view]', objects);
+                        
+                    }).catch(error => {
+                        Alvine.Util.Logger.logError(namespace+'.'+componentName, error);
+                        
+                    });
+
+                    function initUI(configuration) {
+                        var view = this, arguments, panel;
+
+                        arguments = configuration.get('arguments');
+                        panel = new Alvine.Package.UI.Dialog.Panel(arguments.get('title', 'My Title'));
+
+                        view.clear();
+                        view.appendContent(panel);
+                        panel.addContent('Hello World!');
+                    }
+
+                    function activateUI(configuration) {
+
+                    }
+
+
+                    return null;
+
+                })(window!==undefined?window:this);
+
+            } catch(e) {
+                /**
+                 * At this point, can not be assumed,
+                 * that there are certain properties and functions. That's why
+                 * insert test for undefined and only if available.
+                 */
+                if(console!==undefined&&console.error!==undefined) {
+                    console.error('Alvine.Package.i18n.Globalize: '+e);
+                    console.error(e);
+                }
+            }
+
+        </script>
+    </body>
+</html>
